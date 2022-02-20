@@ -1,0 +1,10 @@
+zone "nyc3.carlosbouzas.es" {
+        type master;
+        file "/etc/bind/zones/db.nyc3.carlosbouzas.es";
+        allow-transfer { 172.21.0.5; };
+};
+zone "21.172.in-addr-arpa" {
+        type master;
+        file "/etc/bind/zones/db.21.172";
+        allow-transfer { 172.21.0.5; };
+};

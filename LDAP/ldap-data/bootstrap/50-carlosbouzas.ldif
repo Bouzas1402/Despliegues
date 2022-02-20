@@ -1,0 +1,49 @@
+dn: uid=desarrolloWeb,dc=carlosbouzas,dc=es
+objectclass: inetOrgPerson
+uid: desarrolloWeb
+cn: desarrolloWeb
+givenname: desarrolloWeb
+sn: Desarrollo
+displayname: Usuario Desarrollo
+mail: dev@carlosbouzas.es
+userpassword: desa
+
+dn: uid=despliegueWeb,dc=carlosbouzas,dc=es
+objectclass: inetOrgPerson
+uid: despliegueWeb
+cn: despliegueWeb
+givenname: despliegueWeb
+sn: Despliegue
+displayname: Usuario Operaciones
+mail: ops@carlosbouzas.es
+userpassword: ops
+
+dn: uid=dbadmin,dc=carlosbouzas,dc=es
+objectclass: inetOrgPerson
+uid: dbadmin
+cn: dbadmin
+givenname: dbadmin
+sn: Administrador de BD
+displayname: BD Admin
+mail: dbadmin@carlosbouzas.es
+userpassword: carlos
+
+dn: ou=Profesores,dc=carlosbouzas,dc=es
+objectClass: top
+objectClass: organizationalUnit
+ou: Profesores
+
+dn: ou=Alumnos,dc=carlosbouzas,dc=es
+objectClass: organizationalUnit
+ou: Alumnos
+
+dn: cn=Admins,ou=Profesores,dc=carlosbouzas,dc=es
+cn: Admins
+objectclass: groupOfUniqueNames
+uniqueMember: uid=dbadmin,dc=carlosbouzas,dc=es
+
+dn: cn=Desarrollo,ou=Alumnos,dc=carlosbouzas,dc=es
+cn: Desarrollo
+objectclass: groupOfUniqueNames
+uniqueMember: uid=desarrolloWeb,dc=carlosbouzas,dc=es
+uniqueMember: uid=despliegueWeb,dc=carlosbouzas,dc=es
