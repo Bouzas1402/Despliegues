@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  pure-ftpd:
+    image: stilliard/pure-ftpd
+    container_name: servidor-ftp
+    ports:
+      - "2101:21"
+      - "21010-21019:21010-21019"
+    expose:
+      - "21010-21019"
+    volumes:
+      - ./webapp:/var/www/html/
+    environment:
+      PUBLICHOST: "localhost"  # Replace this with your server public IP
+      FTP_USER_NAME: admin
+      FTP_USER_PASS: adminpass
+      FTP_USER_HOME: /var/www/html/
+      FTP_PASSIVE_PORTS: "21010:21019"
+
+

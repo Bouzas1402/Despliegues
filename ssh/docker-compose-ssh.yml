@@ -1,0 +1,29 @@
+version: "3.9"
+
+# docker compose -f docker-compose-ssh.yml up -d
+services:
+  servidor-ssh:
+    image: openssh-server
+    container_name: servidor-ssh
+    ports:
+      - "2201:22"
+    networks:
+      mi_red:
+        ipv4_address: 172.29.0.2
+
+  cliente-ssh:
+    image: openssh-client
+    container_name: cliente-ssh
+    privileged: true  # para que funcione el montaje con sshfs 
+    tty: true # para que genere un terminal no haga un exit tras arrancar
+    networks:
+      mi_red:
+        ipv4_address: 172.29.0.5
+
+networks:
+  mi_red:
+    ipam:
+      config:
+        - subnet: "172.29.0.0/16"
+
+

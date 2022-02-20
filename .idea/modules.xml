@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Despliegues.iml" filepath="$PROJECT_DIR$/.idea/Despliegues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LDAP/LDAP.iml" filepath="$PROJECT_DIR$/LDAP/LDAP.iml" />
+    </modules>
+  </component>
+</project>

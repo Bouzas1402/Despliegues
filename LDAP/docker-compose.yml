@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  ldap-server:
+    image: osixia/openldap
+    container_name: ldap-server
+    environment:
+      # Enable this after the initial bootstrap
+      #KEEP_EXISTING_CONFIG: "true"
+      LDAP_ORGANISATION: "CarlosGS Spain"
+      LDAP_DOMAIN: carlosgs.es
+      LDAP_ADMIN_PASSWORD: admin 
+    ports:
+      - 389:389
+    volumes:
+      - ./ldap-data/bootstrap:/container/service/slapd/assets/config/bootstrap/ldif/custom
+      - ./ldap-data/database:/var/lib/ldap
+      - ./ldap-data/config:/etc/ldap/slapd.d
+    command: --copy-service
+
+  ldap-admin:
+    image: osixia/phpldapadmin
+    container_name: ldap-admin
+    ports:
+      - 8090:80
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: ldap-server
+      PHPLDAPADMIN_HTTPS: 'false'
+    depends_on:
+      - ldap-server
+  
+  ldap-apache:
+    image: php-mysqli-xdebug:8.0-fpm
+    container_name: ldap-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./webapp:/var/www/html
+    depends_on:
+      - ldap-server

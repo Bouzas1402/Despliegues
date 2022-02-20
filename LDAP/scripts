@@ -1,0 +1,9 @@
+ldapsearch -x -b "cn=Operaciones,ou=Groups,dc=carlosgs,dc=es" -D "cn=admin,dc=carlosgs,dc=es" -w admin
+
+ldapsearch -x -H "ldap://openldap" -D "cn=admin,dc=openldap" -w admin -b "dc=openldap" '(&(objectClass=groupOfNames)(member=cn=root,ou=django,dc=openldap))'
+
+ldapsearch -x -b "dc=carlosgs,dc=es" '(&(objectClass=groupOfUniqueNames)(uniqueMember=uid=operaciones,dc=carlosgs,dc=es))'
+
+ldapsearch -LLL -x -h localhost -b 'dc=carlosgs,dc=es' '(uid=desarrollo)' dn
+
+ldapsearch -LLL -x -h localhost -b 'dc=carlosgs,dc=es' -D "cn=admin,dc=carlosgs,dc=es" -w admin '(uid=desarrollo)' dn

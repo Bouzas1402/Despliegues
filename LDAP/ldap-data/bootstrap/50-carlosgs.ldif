@@ -1,0 +1,55 @@
+dn: uid=desarrollo,dc=carlosgs,dc=es
+changetype: add
+objectclass: inetOrgPerson
+uid: desarrollo
+cn: desarrollo
+givenname: desarrollo
+sn: Desarrollo
+displayname: Usuario Desarrollo
+mail: dev@carlosgs.es
+userpassword: desa
+
+dn: uid=operaciones,dc=carlosgs,dc=es
+changetype: add
+objectclass: inetOrgPerson
+uid: operaciones
+cn: operaciones
+givenname: operaciones
+sn: Operaciones
+displayname: Usuario Operaciones 
+mail: ops@carlosgs.es
+userpassword: ops
+
+dn: uid=dbadmin,dc=carlosgs,dc=es
+changetype: add
+objectclass: inetOrgPerson
+uid: dbadmin
+cn: dbadmin
+givenname: dbadmin
+sn: Administrador de BD
+displayname: BD Admin
+mail: dbadmin@carlosgs.es
+userpassword: carlos
+
+dn: ou=Groups,dc=carlosgs,dc=es
+changetype: add
+objectclass: organizationalUnit
+ou: Groups
+
+dn: ou=Users,dc=carlosgs,dc=es
+changetype: add
+objectclass: organizationalUnit
+ou: Users
+
+dn: cn=Admins,ou=Groups,dc=carlosgs,dc=es
+changetype: add
+cn: Admins
+objectclass: groupOfUniqueNames
+uniqueMember: uid=dbadmin,dc=carlosgs,dc=es
+
+dn: cn=Operaciones,ou=Groups,dc=carlosgs,dc=es
+changetype: add
+cn: Operaciones
+objectclass: groupOfUniqueNames
+uniqueMember: uid=operaciones,dc=carlosgs,dc=es
+uniqueMember: uid=desarrollo,dc=carlosgs,dc=es

@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  pure-ftpd:
+    image: stilliard/pure-ftpd
+    container_name: servidor-ftp-anon
+    ports:
+      - "2101:21"
+      - "21010-21019:21010-21019"
+    expose:
+      - "21010-21019"
+    volumes:
+      - ./webapp:/var/www/html/
+    command: bash -c "
+      useradd -d /var/www/html -s /sbin/nologin ftp &&
+      /run.sh -c 30 -C 10 -l puredb:/etc/pure-ftpd/pureftpd.pdb -j -R -P localhost -p 21010:21019
+      " 
+      

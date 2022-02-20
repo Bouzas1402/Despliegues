@@ -1,0 +1,10 @@
+
+FROM debian:buster
+
+RUN apt update 
+RUN apt install -y openssh-client sshfs rsync sudo
+
+CMD ["bash"]
+
+# docker build -t openssh-client -f Dockerfile-ssh-client .
+# docker run --rm -dit --name=cliente-ssh openssh-client
